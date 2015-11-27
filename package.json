@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./src/server/server.babel.js",
     "resetdb": "node ./src/server/database/resetdb.babel.js",
+    "build": "NODE_ENV=production webpack --progress --colors --config ./webpack/webpack.config.prod.js",
     "test": "jest"
   },
   "author": "Matt Krick <matt.krick@gmail.com>",
@@ -68,7 +69,6 @@
     "redux-simple-router": "0.0.8",
     "redux-thunk": "^1.0.0",
     "reselect": "^2.0.0",
-    "rethinkdb": "^2.1.1",
     "rethinkdbdash": "^2.2.3",
     "serve-static": "^1.10.0",
     "socketcluster": "^3.0.0",
