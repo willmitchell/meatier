@@ -7,8 +7,9 @@ const noteSource = {
   beginDrag(props) {
     return {
       id: props.note.id,
-      index: props.note.index,
-      laneId: props.note.laneId,
+      index: props.note.index, //will mutate to update drags without drops
+      laneId: props.note.laneId, //will mutate to update drags without drops
+      startingIndex: props.note.index, //we won't mutate this, we'll use it see if we should call update
       onMove: props.onMove
     };
   },
@@ -22,7 +23,8 @@ const noteSource = {
     const {note, updateNote} = props;
     const item = monitor.getItem();
     const updates = {};
-    if (note.index !== item.index) {
+    if (item.index !== item.startingIndex) {
+      //we can't trust note props since they can be updated when dragging between lanes
       updates.index = item.index;
     }
     if (note.laneId !== item.laneId) {
